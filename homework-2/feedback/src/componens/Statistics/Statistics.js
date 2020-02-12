@@ -1,8 +1,8 @@
 import React, { Fragment } from "react";
+import PropTypes from "prop-types";
 
 const Statistics = ({ good, neutral, bad, total, positivePercentage }) => (
   <Fragment>
-    <p>Statistics</p>
     <span>Good: {good}</span>
     <br></br>
     <span>Neutral: {neutral}</span>
@@ -14,5 +14,13 @@ const Statistics = ({ good, neutral, bad, total, positivePercentage }) => (
     <span>Positive: {positivePercentage()}%</span>
   </Fragment>
 );
+
+Statistics.propTypes = {
+  good: PropTypes.string.isRequired,
+  neutral: PropTypes.string.isRequired,
+  bad: PropTypes.string.isRequired,
+  total: PropTypes.func.isRequired,
+  positivePercentage: PropTypes.func.isRequired
+};
 
 export default Statistics;

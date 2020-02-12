@@ -1,15 +1,23 @@
 import React, { Fragment } from "react";
+import PropTypes from "prop-types";
 
-const FeedbackOptions = ({}) => (
+const FeedbackOptions = ({ options, onLeaveFeedback }) => (
   <Fragment>
-    <button type="button" onClick={this.handleAddGoodFedback}>
-      good
-    </button>
-    <button type="button" onClick={this.handleAddNeutralFedback}>
-      neutral
-    </button>
-    <button type="button" onClick={this.handleAddBadFedback}>
-      bad
-    </button>
+    {options.map(option => (
+      <button
+        key={option}
+        type="button"
+        onClick={() => onLeaveFeedback(option)}
+      >
+        {option}
+      </button>
+    ))}
   </Fragment>
 );
+
+FeedbackOptions.propTypes = {
+  option: PropTypes.array.isRequired,
+  onLeaveFeedback: PropTypes.func.isRequired
+};
+
+export default FeedbackOptions;
