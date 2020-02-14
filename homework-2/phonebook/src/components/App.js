@@ -4,6 +4,7 @@ import React, { Component } from "react";
 import ContactList from "./ContactList/ContactList";
 import Input from "./Input/Input";
 import Filter from "./Filter/Filter";
+import localStorage from "../utils/localStorage";
 
 const filterTasks = (contacts, filter) => {
   return contacts.filter(({ name }) =>
@@ -27,13 +28,24 @@ export default class App extends Component {
     deleteContact: PropTypes.func
   };
 
+  componentDidMount() {
+    const contactsFromLS = localStorage.load("contacts");
+
+    if (contactsFromLS) {
+      this.setState({
+        contacts: contactsFromLS
+      });
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.contacts !== this.state.contacts) {
+      localStorage.save("contacts", this.state.contacts);
+    }
+  }
+
   state = {
-    contacts: [
-      { name: "Kos", number: "32323443", id: shortid.generate() },
-      { name: "Kate", number: "32323443", id: shortid.generate() },
-      { name: "Gabs", number: "32323443", id: shortid.generate() },
-      { name: "Rudy", number: "32323443", id: shortid.generate() }
-    ],
+    contacts: [],
     filter: ""
   };
 
