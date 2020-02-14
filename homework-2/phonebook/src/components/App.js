@@ -1,4 +1,5 @@
 import shortid from "shortid";
+import PropTypes from "prop-types";
 import React, { Component } from "react";
 import ContactList from "./ContactList/ContactList";
 import Input from "./Input/Input";
@@ -11,6 +12,21 @@ const filterTasks = (contacts, filter) => {
 };
 
 export default class App extends Component {
+  static propTypes = {
+    contacts: PropTypes.arrayOf(
+      PropTypes.exact({
+        name: PropTypes.string.isRequired,
+        number: PropTypes.string.isRequired,
+        id: PropTypes.string.isRequired
+      })
+    ),
+    filter: PropTypes.string,
+    changeFilter: PropTypes.func,
+    ressetFilter: PropTypes.func,
+    addContact: PropTypes.func,
+    deleteContact: PropTypes.func
+  };
+
   state = {
     contacts: [
       { name: "Kos", number: "32323443", id: shortid.generate() },

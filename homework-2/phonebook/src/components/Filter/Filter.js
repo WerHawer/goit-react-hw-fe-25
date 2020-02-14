@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import PropTypes from "prop-types";
 
 const Filter = ({ value, onChangeFilter, tasks, ressetFilter }) => (
   <Fragment>
@@ -16,4 +17,16 @@ const Filter = ({ value, onChangeFilter, tasks, ressetFilter }) => (
   </Fragment>
 );
 
+Filter.propTypes = {
+  value: PropTypes.string.isRequired,
+  tasks: PropTypes.arrayOf(
+    PropTypes.exact({
+      name: PropTypes.string.isRequired,
+      number: PropTypes.string.isRequired,
+      id: PropTypes.string.isRequired
+    })
+  ),
+  onChangeFilter: PropTypes.func.isRequired,
+  ressetFilter: PropTypes.func.isRequired
+};
 export default Filter;

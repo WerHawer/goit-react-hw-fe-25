@@ -1,7 +1,13 @@
 import React, { Component } from "react";
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 
 class Input extends Component {
+  static propTypes = {
+    name: PropTypes.string,
+    number: PropTypes.string,
+    onClickButton: PropTypes.func.isRequired
+  };
+
   state = {
     name: "",
     number: ""
