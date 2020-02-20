@@ -13,21 +13,6 @@ const filterTasks = (contacts, filter) => {
 };
 
 export default class App extends Component {
-  static propTypes = {
-    contacts: PropTypes.arrayOf(
-      PropTypes.exact({
-        name: PropTypes.string.isRequired,
-        number: PropTypes.string.isRequired,
-        id: PropTypes.string.isRequired
-      })
-    ),
-    filter: PropTypes.string,
-    changeFilter: PropTypes.func,
-    ressetFilter: PropTypes.func,
-    addContact: PropTypes.func,
-    deleteContact: PropTypes.func
-  };
-
   componentDidMount() {
     const contactsFromLS = localStorage.load("contacts");
 
