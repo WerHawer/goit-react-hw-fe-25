@@ -1,0 +1,22 @@
+.list {
+  display: flex;
+  border-bottom: 1px solid #000;
+  margin-bottom: 15px;
+  padding-left: 10%;
+  padding-bottom: 15px;
+}
+
+.listElement {
+  margin-right: 20px;
+}
+
+.link {
+  font-size: 18px;
+  color: #000000;
+  text-decoration: none;
+}
+
+.linkActive {
+  font-weight: bold;
+  color: blue;
+}

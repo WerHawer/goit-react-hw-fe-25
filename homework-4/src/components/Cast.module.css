@@ -1,0 +1,18 @@
+.wrapper {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.list {
+  display: flex;
+  overflow-x: auto;
+}
+
+.listElement {
+  min-width: 200px;
+  margin-right: 20px;
+}
+
+.listElement img {
+  height: 300px;
+}

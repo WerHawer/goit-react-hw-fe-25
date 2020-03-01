@@ -1,0 +1,16 @@
+.searchForm {
+  display: block;
+  width: 80%;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+
+.input {
+  display: block;
+  width: 250px;
+  height: 30px;
+  margin: 0 auto;
+  border-radius: 15px;
+  padding-left: 20px;
+  outline: none;
+}

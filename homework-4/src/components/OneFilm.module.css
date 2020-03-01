@@ -1,0 +1,20 @@
+.wrapper {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.aboutFilm {
+  display: flex;
+}
+
+.info {
+  padding-left: 20px;
+}
+
+.genre {
+  margin-right: 5px;
+}
+
+.backBtn {
+  margin-bottom: 15px;
+}
