@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import movieAPI from "../components/movieAPI";
-import Reviews from "../components/Reviews";
+import movieAPI from "../utils/movieAPI";
+import Reviews from "../components/Reviews/Reviews";
 
 export default class ReviewsPage extends Component {
   state = { reviews: [] };

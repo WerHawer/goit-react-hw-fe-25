@@ -1,9 +1,10 @@
-import React, { Component } from "react";
-import HomePage from "./pages/HomePage";
+import React, { Component, lazy, Suspense } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
-import OneFilmPage from "./pages/OneFilmPage";
-import MovieDetailsPage from "./pages/MovieDetailsPage";
-import Nav from "./components/Nav";
+import Nav from "./components/Nav/Nav";
+
+const asyncHome = lazy(() => import("./pages/HomePage"));
+const asyncOneFilmPage = lazy(() => import("./pages/OneFilmPage"));
+const asyncMovieDetails = lazy(() => import("./pages/MovieDetailsPage"));
 
 export default class App extends Component {
   state = {};
@@ -12,13 +13,14 @@ export default class App extends Component {
     return (
       <>
         <Nav />
-
-        <Switch>
-          <Route path="/" exact component={HomePage} />
-          <Route path="/movie/:movieId" component={OneFilmPage} />
-          <Route path="/movie" component={MovieDetailsPage} />
-          <Redirect to="/" />
-        </Switch>
+        <Suspense fallback={<div>Loading...</div>}>
+          <Switch>
+            <Route path="/" exact component={asyncHome} />
+            <Route path="/movie/:movieId" component={asyncOneFilmPage} />
+            <Route path="/movie" component={asyncMovieDetails} />
+            <Redirect to="/" />
+          </Switch>
+        </Suspense>
       </>
     );
   }

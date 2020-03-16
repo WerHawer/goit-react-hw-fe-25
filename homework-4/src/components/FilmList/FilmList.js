@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./FilmList.module.css";
-import movieAPI from "./movieAPI";
+import movieAPI from "../../utils/movieAPI";
 
 const FilmList = ({ films, props }) => (
   <ul className={styles.filmList}>

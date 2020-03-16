@@ -1,7 +1,7 @@
 import React from "react";
-import movieAPI from "./movieAPI";
+import movieAPI from "../../utils/movieAPI";
 import styles from "./Cast.module.css";
-import noAvatar from "../img/noavatar.jpeg";
+import noAvatar from "../../img/noavatar.jpeg";
 
 const Cast = ({ actors }) => (
   <div className={styles.wrapper}>

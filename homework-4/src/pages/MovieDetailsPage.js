@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import MovieDetails from "../components/MovieDetails";
-import movieAPI from "../components/movieAPI";
-import FilmList from "../components/FilmList";
+import MovieDetails from "../components/MovieDetails/MovieDetails";
+import movieAPI from "../utils/movieAPI";
+import FilmList from "../components/FilmList/FilmList";
 import queryString from "query-string";
 
 const getCategoryFromLocation = location =>

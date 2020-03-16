@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import FilmList from "../components/FilmList";
-import movieAPI from "../components/movieAPI";
+import FilmList from "../components/FilmList/FilmList";
+import movieAPI from "../utils/movieAPI";
 
 export default class HomePage extends Component {
   state = { films: [] };

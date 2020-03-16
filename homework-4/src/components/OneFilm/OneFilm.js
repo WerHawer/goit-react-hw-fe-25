@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import movieAPI from "./movieAPI";
+import movieAPI from "../../utils/movieAPI";
 import styles from "./OneFilm.module.css";
 
 const OneFilm = ({ film, onClick, date, props }) => (

@@ -1,9 +1,10 @@
-import React, { Component } from "react";
-import OneFilm from "../components/OneFilm";
+import React, { Component, lazy, Suspense } from "react";
 import { Route, Switch } from "react-router-dom";
-import movieAPI from "../components/movieAPI";
-import CastPage from "./CastPage";
-import ReviewsPage from "./ReviewsPage";
+import OneFilm from "../components/OneFilm/OneFilm";
+import movieAPI from "../utils/movieAPI";
+
+const asyncCast = lazy(() => import("./CastPage"));
+const asyncReiews = lazy(() => import("./ReviewsPage"));
 
 export default class OneFilmPage extends Component {
   state = { film: null };
@@ -52,11 +53,12 @@ export default class OneFilmPage extends Component {
             props={this.props}
           />
         )}
-
-        <Switch>
-          <Route path="/movie/:movieId/cast" component={CastPage} />
-          <Route path="/movie/:movieId/reviews" component={ReviewsPage} />
-        </Switch>
+        <Suspense fallback={<div>Loading...</div>}>
+          <Switch>
+            <Route path="/movie/:movieId/cast" component={asyncCast} />
+            <Route path="/movie/:movieId/reviews" component={asyncReiews} />
+          </Switch>
+        </Suspense>
       </>
     );
   }

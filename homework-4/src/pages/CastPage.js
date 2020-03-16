@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import movieAPI from "../components/movieAPI";
-import Cast from "../components/Cast";
+import movieAPI from "../utils/movieAPI";
+import Cast from "../components/Cast/Cast";
 
 export default class CastPage extends Component {
   state = { actors: null };
@@ -13,7 +13,6 @@ export default class CastPage extends Component {
     const filmId = this.props.match.params.movieId;
     const filmActors = await movieAPI.getActors(filmId);
     this.setState({ actors: filmActors });
-    console.log(filmActors);
   };
 
   render() {
