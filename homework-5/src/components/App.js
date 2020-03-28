@@ -1,9 +1,12 @@
-import shortid from "shortid";
 import React, { Component } from "react";
-import ContactList from "./ContactList/ContactList";
 import Input from "./Input/Input";
+import { CSSTransition } from "react-transition-group";
+import styles from "./App.module.css";
+import shortid from "shortid";
+import ContactList from "./ContactList/ContactList";
 import Filter from "./Filter/Filter";
 import localStorage from "../utils/localStorage";
+import slideTransition from "../transitions/slideLogo.module.css";
 
 const filterTasks = (contacts, filter) => {
   return contacts.filter(({ name }) =>
@@ -20,6 +23,8 @@ export default class App extends Component {
         contacts: contactsFromLS
       });
     }
+
+    this.setState({ logo: true });
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -30,18 +35,13 @@ export default class App extends Component {
 
   state = {
     contacts: [],
-    filter: ""
+    filter: "",
+    logo: false
   };
 
   changeFilter = e => {
     this.setState({
       filter: e.target.value
-    });
-  };
-
-  ressetFilter = e => {
-    this.setState({
-      filter: ""
     });
   };
 
@@ -60,21 +60,23 @@ export default class App extends Component {
     }));
   };
   render() {
-    const { contacts, filter } = this.state;
+    const { contacts, filter, logo } = this.state;
     const filteredTasks = filterTasks(contacts, filter);
     return (
-      <div>
-        <h1>Phonebook</h1>
-        <Input onClickButton={this.addContact} contacts={contacts} />
+      <div className="wrapper">
+        <div className="screen">
+          <CSSTransition in={logo} timeout={500} classNames={slideTransition}>
+            <h1 className={styles.phonebook}>Phonebook</h1>
+          </CSSTransition>
+          <Input addContact={this.addContact} contacts={contacts} />
 
-        <h2>Contacts</h2>
-        <Filter
-          value={filter}
-          onChangeFilter={this.changeFilter}
-          tasks={filteredTasks}
-          ressetFilter={this.ressetFilter}
-        />
-        <ContactList contacts={filteredTasks} onDelete={this.deleteContact} />
+          <Filter
+            value={filter}
+            onChangeFilter={this.changeFilter}
+            tasks={filteredTasks}
+          />
+          <ContactList contacts={filteredTasks} onDelete={this.deleteContact} />
+        </div>
       </div>
     );
   }

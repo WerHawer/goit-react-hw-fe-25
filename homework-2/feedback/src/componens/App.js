@@ -8,10 +8,6 @@ import Notification from "./Notification/Notification";
 const btnOptions = Object.values(buttonsValue);
 
 class App extends Component {
-  static defaultProps = {
-    step: 1
-  };
-
   state = {
     good: 0,
     neutral: 0,

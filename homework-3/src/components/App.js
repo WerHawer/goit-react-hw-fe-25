@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import pixabayApi from "./pixabayApi";
+import pixabayApi from "../utils/pixabayApi";
 import Header from "./Header";
 import SearchForm from "./SearchForm";
 import ImageGalery from "./ImageGalery";
 import Loader from "react-loader-spinner";
-import LoadBtn from "./LoadBtn";
+import LoadBtn from "../LoadBtn";
 import BigPhotoModal from "./BigPhotoModal";
-import NoResults from "./NoResults";
+import NoResults from "../NoResults";
 
 class App extends Component {
   state = {
