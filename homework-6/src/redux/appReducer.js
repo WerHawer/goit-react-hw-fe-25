@@ -4,7 +4,7 @@ import shortid from "shortid";
 
 const contactsInit = {
   contacts: [],
-  alreadyUse: false
+  alreadyUse: false,
 };
 
 const contactsReducer = (state = contactsInit, { type, payload }) => {
@@ -18,13 +18,13 @@ const contactsReducer = (state = contactsInit, { type, payload }) => {
 
       return {
         alreadyUse: false,
-        contacts: [...state.contacts, { ...payload, id: shortid.generate() }]
+        contacts: [...state.contacts, { ...payload, id: shortid.generate() }],
       };
 
     case Type.DELETE_CONTACT:
       return {
         ...state,
-        contacts: state.contacts.filter(({ id }) => id !== payload)
+        contacts: state.contacts.filter(({ id }) => id !== payload),
       };
 
     default:
@@ -35,7 +35,7 @@ const contactsReducer = (state = contactsInit, { type, payload }) => {
 const initialInputs = {
   filter: "",
   name: "",
-  number: ""
+  number: "",
 };
 
 const inputsReducer = (state = initialInputs, { type, payload }) => {
@@ -51,15 +51,18 @@ const inputsReducer = (state = initialInputs, { type, payload }) => {
   }
 };
 
-const logoReducer = (state = true, { type, payload }) => {
-  setInterval(() => {
-    return state;
-  }, 0);
-  return state;
+const logoReducer = (state = false, { type, payload }) => {
+  switch (type) {
+    case Type.SHOW_LOGO:
+      return payload;
+
+    default:
+      return state;
+  }
 };
 
 export default combineReducers({
   contacts: contactsReducer,
   inputs: inputsReducer,
-  logo: logoReducer
+  logo: logoReducer,
 });

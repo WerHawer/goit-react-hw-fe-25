@@ -11,7 +11,7 @@ const Input = ({
   onChange,
   addContact,
   ressetInputs,
-  nameAlreadyUse
+  nameAlreadyUse,
 }) => (
   <>
     <CSSTransition
@@ -25,7 +25,7 @@ const Input = ({
 
     <form
       action="submit"
-      onSubmit={e => {
+      onSubmit={(e) => {
         e.preventDefault();
         addContact(name, number);
         ressetInputs(name, number);
@@ -58,16 +58,17 @@ const Input = ({
   </>
 );
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   name: state.main.inputs.name,
   number: state.main.inputs.number,
-  nameAlreadyUse: state.main.contacts.alreadyUse
+  nameAlreadyUse: state.main.contacts.alreadyUse,
 });
 
-const mapDispatchToProps = dispatch => ({
-  onChange: e => dispatch(appActions.changeInput(e)),
+const mapDispatchToProps = (dispatch) => ({
+  onChange: (e) => dispatch(appActions.changeInput(e)),
   addContact: (name, num) => dispatch(appActions.addContact(name, num)),
-  ressetInputs: (name, number) => dispatch(appActions.ressetInput(name, number))
+  ressetInputs: (name, number) =>
+    dispatch(appActions.ressetInput(name, number)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Input);
