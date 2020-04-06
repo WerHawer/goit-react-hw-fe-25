@@ -8,10 +8,8 @@ import {
   Tag,
   Location,
   Stats,
-  StatsElement,
-  Label,
-  Quantity
 } from "./Profile.styled";
+import StatsEl from "./StatsEl";
 
 const Profile = ({ user }) => (
   <Wrapper>
@@ -23,18 +21,9 @@ const Profile = ({ user }) => (
     </Description>
 
     <Stats>
-      <StatsElement>
-        <Label>Followers</Label>
-        <Quantity>{user.stats.followers}</Quantity>
-      </StatsElement>
-      <StatsElement>
-        <Label>Views</Label>
-        <Quantity>{user.stats.views}</Quantity>
-      </StatsElement>
-      <StatsElement>
-        <Label>Likes</Label>
-        <Quantity>{user.stats.likes}</Quantity>
-      </StatsElement>
+      <StatsEl label="Followers" quantity={user.stats.followers} />
+      <StatsEl label="Views" quantity={user.stats.views} />
+      <StatsEl label="Likes" quantity={user.stats.likes} />
     </Stats>
   </Wrapper>
 );
@@ -48,8 +37,8 @@ Profile.propTypes = {
     stats: PropTypes.exact({
       followers: PropTypes.number.isRequired,
       views: PropTypes.number.isRequired,
-      likes: PropTypes.number.isRequired
-    })
-  })
+      likes: PropTypes.number.isRequired,
+    }),
+  }),
 };
 export default Profile;

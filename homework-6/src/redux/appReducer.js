@@ -27,6 +27,12 @@ const contactsReducer = (state = contactsInit, { type, payload }) => {
         contacts: state.contacts.filter(({ id }) => id !== payload),
       };
 
+    case Type.ADD_CONTACT_LIST:
+      return {
+        ...state,
+        contacts: [...payload],
+      };
+
     default:
       return state;
   }

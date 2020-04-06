@@ -7,7 +7,7 @@ export const FriendsList = styled.ul`
   margin-bottom: 15px;
 `;
 
-export const FriendsListElement = styled.li`
+export const FriendsListElementS = styled.li`
   display: flex;
   align-items: center;
   box-shadow: 0px 1px 3px 0px rgba(191, 205, 222, 0.75);
@@ -19,7 +19,7 @@ export const OnlineIndicator = styled.div`
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background-color: ${props => (props.online ? "green" : "red")};
+  background-color: ${(props) => (props.online ? "green" : "red")};
   margin-right: 8px;
 `;
 

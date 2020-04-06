@@ -5,6 +5,7 @@ export const Type = {
   NAME_ALREDY_USE: "NAME_ALREDY_USE",
   RESSET_INPUT: "RESSET_INPUT",
   SHOW_LOGO: "SHOW_LOGO",
+  ADD_CONTACT_LIST: "ADD_CONTACT_LIST",
 };
 
 export const changeInput = (e) => ({
@@ -21,6 +22,11 @@ export const addContact = (name, number) => ({
     name,
     number,
   },
+});
+
+export const addContactList = (arr) => ({
+  type: Type.ADD_CONTACT_LIST,
+  payload: arr,
 });
 
 export const deleteContact = (id) => ({

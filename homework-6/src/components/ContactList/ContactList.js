@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import styles from "./ContactList.module.css";
 import slideTransition from "../../transitions/slideContact.module.css";
 import * as appActions from "../../redux/appActions";
 import { connect } from "react-redux";
+import localStorage from "../../utils/localStorage";
 
 const filterTasks = (contacts, filter) => {
   return contacts.filter(({ name }) =>
@@ -11,7 +12,16 @@ const filterTasks = (contacts, filter) => {
   );
 };
 
-const ContactList = ({ contacts, filter, onDelete }) => {
+const ContactList = ({ contacts, filter, onDelete, addFromLS }) => {
+  useEffect(() => {
+    const contactsLS = localStorage.load("contacts") || [];
+    addFromLS(contactsLS);
+  }, []);
+
+  useEffect(() => {
+    localStorage.save("contacts", contacts);
+  }, [contacts]);
+
   const filteredContacts = filterTasks(contacts, filter);
 
   return (
@@ -48,6 +58,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   onDelete: (id) => dispatch(appActions.deleteContact(id)),
+  addFromLS: (arrLS) => dispatch(appActions.addContactList(arrLS)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ContactList);

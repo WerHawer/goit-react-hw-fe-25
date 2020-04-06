@@ -40,5 +40,4 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   showLogo: () => dispatch(appActions.showLogo()),
 });
-
 export default connect(mapStateToProps, mapDispatchToProps)(App);
