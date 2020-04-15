@@ -17,7 +17,7 @@ export default class App extends Component {
 
     if (contactsFromLS) {
       this.setState({
-        contacts: contactsFromLS
+        contacts: contactsFromLS,
       });
     }
   }
@@ -30,18 +30,18 @@ export default class App extends Component {
 
   state = {
     contacts: [],
-    filter: ""
+    filter: "",
   };
 
-  changeFilter = e => {
+  changeFilter = (e) => {
     this.setState({
-      filter: e.target.value
+      filter: e.target.value,
     });
   };
 
-  ressetFilter = e => {
+  ressetFilter = (e) => {
     this.setState({
-      filter: ""
+      filter: "",
     });
   };
 
@@ -49,21 +49,22 @@ export default class App extends Component {
     const { contacts } = this.state;
     const contactToAdd = { name, number, id: shortid.generate() };
 
-    this.setState(state => ({
-      contacts: [...contacts, contactToAdd]
+    this.setState((state) => ({
+      contacts: [...contacts, contactToAdd],
     }));
   };
 
-  deleteContact = targetId => {
-    this.setState(state => ({
-      contacts: state.contacts.filter(({ id }) => id !== targetId)
-    }));
+  deleteContact = (e) => {
+    const { contacts } = this.state;
+    const targetId = e.target.id;
+    const contactsAfterDel = contacts.filter(({ id }) => id !== targetId);
+    this.setState({ contacts: contactsAfterDel });
   };
   render() {
     const { contacts, filter } = this.state;
     const filteredTasks = filterTasks(contacts, filter);
     return (
-      <div>
+      <div style={{ paddingLeft: "50px" }}>
         <h1>Phonebook</h1>
         <Input onClickButton={this.addContact} contacts={contacts} />
 
@@ -74,7 +75,10 @@ export default class App extends Component {
           tasks={filteredTasks}
           ressetFilter={this.ressetFilter}
         />
-        <ContactList contacts={filteredTasks} onDelete={this.deleteContact} />
+        <ContactList
+          contacts={filteredTasks}
+          handleDelete={this.deleteContact}
+        />
       </div>
     );
   }

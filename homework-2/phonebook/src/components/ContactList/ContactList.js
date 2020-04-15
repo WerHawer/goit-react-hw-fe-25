@@ -1,22 +1,18 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Contact from "./Contact";
 
-const ContactList = ({ contacts, onDelete }) =>
+const ContactList = ({ contacts, handleDelete }) =>
   contacts.length > 0 ? (
     <ul>
       {contacts.map(({ name, number, id }) => (
-        <li key={id}>
-          <span>
-            {name}: {number}
-          </span>
-          <button
-            type="button"
-            data-id={id}
-            onClick={e => onDelete(e.target.dataset.id)}
-          >
-            delete
-          </button>
-        </li>
+        <Contact
+          key={id}
+          id={id}
+          name={name}
+          number={number}
+          onClick={handleDelete}
+        />
       ))}
     </ul>
   ) : (
@@ -28,10 +24,10 @@ ContactList.propTypes = {
     PropTypes.exact({
       name: PropTypes.string.isRequired,
       number: PropTypes.string.isRequired,
-      id: PropTypes.string.isRequired
+      id: PropTypes.string.isRequired,
     })
   ),
-  onDelete: PropTypes.func.isRequired
+  handleDelete: PropTypes.func.isRequired,
 };
 
 export default ContactList;

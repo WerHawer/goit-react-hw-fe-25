@@ -11,11 +11,11 @@ class App extends Component {
   state = {
     good: 0,
     neutral: 0,
-    bad: 0
+    bad: 0,
   };
 
-  handleAddFeedback = value => {
-    this.setState(state => ({ [value]: state[value] + 1 }));
+  handleAddFeedback = (value) => {
+    this.setState((state) => ({ [value]: state[value] + 1 }));
   };
 
   countTotalFeedback = () => {
@@ -32,7 +32,7 @@ class App extends Component {
       percentage = Math.floor((good / this.countTotalFeedback()) * 100);
     }
 
-    return percentage;
+    return `${percentage}%`;
   };
 
   render() {
