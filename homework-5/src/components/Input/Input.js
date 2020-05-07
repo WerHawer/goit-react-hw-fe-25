@@ -25,9 +25,9 @@ class Input extends Component {
     new Inputmask("99-99-99").mask(telRef);
   }
 
-  handleChange = (e) => {
+  handleChange = (e, name) => {
     this.setState({
-      [e.target.name]: e.target.value,
+      [name]: e.target.value,
     });
   };
 
@@ -90,7 +90,7 @@ class Input extends Component {
             type="text"
             name="name"
             value={name}
-            onChange={this.handleChange}
+            onChange={(e) => this.handleChange(e, "name")}
           />
 
           <h2 className={styles.text}>Number</h2>
@@ -99,7 +99,7 @@ class Input extends Component {
             type="text"
             name="number"
             value={number}
-            onChange={this.handleChange}
+            onChange={(e) => this.handleChange(e, "number")}
           />
 
           <br />
