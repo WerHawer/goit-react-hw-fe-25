@@ -3,22 +3,20 @@ import { TransitionGroup, CSSTransition } from "react-transition-group";
 import PropTypes from "prop-types";
 import styles from "./ContactList.module.css";
 import slideTransition from "../../transitions/slideContact.module.css";
+import ContactListEl from "./ContactListEl";
 
 const ContactList = ({ contacts, onDelete }) => (
   <>
     <TransitionGroup component="ul" className={styles.ul}>
       {contacts.map(({ name, number, id }) => (
         <CSSTransition key={id} timeout={400} classNames={slideTransition}>
-          <li className={styles.li}>
-            <span className={styles.name}>{name}</span>
-            <span className={styles.number}>{number}</span>
-            <button
-              type="button"
-              data-id={id}
-              onClick={(e) => onDelete(e.target.dataset.id)}
-              className={styles.button}
-            ></button>
-          </li>
+          <ContactListEl
+            name={name}
+            styles={styles}
+            onDelete={onDelete}
+            id={id}
+            number={number}
+          />
         </CSSTransition>
       ))}
     </TransitionGroup>

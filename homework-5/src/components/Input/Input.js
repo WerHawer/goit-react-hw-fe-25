@@ -1,30 +1,37 @@
-import React, { Component } from "react";
+import React, { Component, createRef } from "react";
 import PropTypes from "prop-types";
 import styles from "./Input.module.css";
 import Alert from "../notifications/Alert";
 import InputI from "../InputComponent/InputI";
+import Inputmask from "inputmask";
+
+const telRef = createRef();
 
 class Input extends Component {
   static propTypes = {
     name: PropTypes.string,
     number: PropTypes.string,
-    addContact: PropTypes.func.isRequired
+    addContact: PropTypes.func.isRequired,
   };
 
   state = {
     name: "",
     number: "",
     nameAlreadyUse: false,
-    emptyField: false
+    emptyField: false,
   };
 
-  handleChange = e => {
+  componentDidMount() {
+    new Inputmask("99-99-99").mask(telRef);
+  }
+
+  handleChange = (e) => {
     this.setState({
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
-  handleSubmit = e => {
+  handleSubmit = (e) => {
     e.preventDefault();
     const { name, number } = this.state;
 
@@ -35,7 +42,7 @@ class Input extends Component {
     this.props.addContact(name, number);
     this.setState({
       name: "",
-      number: ""
+      number: "",
     });
   };
 
@@ -88,7 +95,8 @@ class Input extends Component {
 
           <h2 className={styles.text}>Number</h2>
           <InputI
-            type="number"
+            refP={telRef}
+            type="text"
             name="number"
             value={number}
             onChange={this.handleChange}
