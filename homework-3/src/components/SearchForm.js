@@ -1,15 +1,16 @@
 import React from "react";
+import Input from "./UI/Input";
+import Button from "./UI/Button";
 
 const SearchForm = ({ value, onChange, onSubmit }) => (
   <form className="SearchForm" onSubmit={onSubmit}>
-    <button type="submit" className="SearchForm-button">
+    <Button type="submit" customClass="SearchForm-button">
       <span className="SearchForm-button-label">Search</span>
-    </button>
+    </Button>
 
-    <input
-      className="SearchForm-input"
+    <Input
+      customClass="SearchForm-input"
       type="text"
-      autoComplete="off"
       autoFocus
       placeholder="Search images and photos"
       value={value}

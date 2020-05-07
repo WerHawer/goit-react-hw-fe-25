@@ -30,3 +30,8 @@ ul {
   list-style: none;
   padding: 0;
 }
+
+.link {
+  text-decoration: none;
+  margin-right: 30px;
+}

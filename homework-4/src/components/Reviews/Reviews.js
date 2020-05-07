@@ -1,17 +1,13 @@
 import React from "react";
 import styles from "./Reviews.module.css";
+import ReviewsEl from "./ReviewsEl";
 
 const Reviews = ({ reviews }) => (
   <div className={styles.wrapper}>
     {reviews.length > 0 ? (
       <ul>
-        {reviews.map(review => (
-          <li key={review.id}>
-            <p>
-              <b>{review.author}</b>
-            </p>
-            <p>{review.content}</p>
-          </li>
+        {reviews.map((review) => (
+          <ReviewsEl review={review} />
         ))}
       </ul>
     ) : (

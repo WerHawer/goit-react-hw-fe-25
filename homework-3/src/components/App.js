@@ -4,9 +4,9 @@ import Header from "./Header";
 import SearchForm from "./SearchForm";
 import ImageGalery from "./ImageGalery";
 import Loader from "react-loader-spinner";
-import LoadBtn from "../LoadBtn";
 import BigPhotoModal from "./BigPhotoModal";
 import NoResults from "../NoResults";
+import Button from "./UI/Button";
 
 class App extends Component {
   state = {
@@ -14,7 +14,7 @@ class App extends Component {
     photos: [],
     fullSize: false,
     isLoading: false,
-    bigUrl: ""
+    bigUrl: "",
   };
 
   componentDidMount() {
@@ -28,9 +28,9 @@ class App extends Component {
       this.setState({ photos: photosApi });
     } catch (error) {
       console.log(error);
+    } finally {
+      this.setState({ isLoading: false });
     }
-
-    this.setState({ isLoading: false });
   };
 
   handleFetch = async () => {
@@ -40,16 +40,16 @@ class App extends Component {
       this.setState(({ photos }) => ({ photos: [...photos, ...photosApi] }));
     } catch (error) {
       console.log(error);
+    } finally {
+      this.setState({ isLoading: false });
     }
-
-    this.setState({ isLoading: false });
   };
 
-  handleChangeQuery = e => {
+  handleChangeQuery = (e) => {
     this.setState({ query: e.target.value });
   };
 
-  onSubmitForm = e => {
+  onSubmitForm = (e) => {
     e.preventDefault();
     pixabayApi.pageResset();
     this.handleNewQueryFetch();
@@ -59,25 +59,25 @@ class App extends Component {
     await this.handleFetch();
     window.scrollTo({
       top: document.documentElement.scrollHeight,
-      behavior: "smooth"
+      behavior: "smooth",
     });
   };
 
-  onClickPhoto = e => {
+  onClickPhoto = (e) => {
     const { photos } = this.state;
 
     const targetPhoto = photos.find(({ id }) => id === +e.target.id);
     this.setState({ fullSize: true, bigUrl: targetPhoto.largeImageURL });
   };
 
-  onClickOverlay = e => {
+  onClickOverlay = (e) => {
     if (e.target.nodeName === "IMG") return;
 
     this.setState({ fullSize: false });
   };
 
-  onPressEsc = e => {
-    const hideModal = e => {
+  onPressEsc = (e) => {
+    const hideModal = (e) => {
       if (e.code === "Escape") {
         this.setState({ fullSize: false });
         window.removeEventListener("keydown", hideModal);
@@ -108,7 +108,14 @@ class App extends Component {
         )}
 
         {photos.length > 0 && !isLoading ? (
-          <LoadBtn onClick={this.onClickBtn} />
+          <Button
+            type="button"
+            name="loadMore"
+            onClick={this.onClickBtn}
+            customClass="Button"
+          >
+            Load more
+          </Button>
         ) : null}
 
         {fullSize && (

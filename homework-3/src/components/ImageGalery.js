@@ -1,16 +1,10 @@
 import React from "react";
+import ImageGaleryElement from "./ImageGaleryElement";
 
 const ImageGalery = ({ onClick, photos }) => (
   <ul className="ImageGallery">
-    {photos.map(photo => (
-      <li className="ImageGalleryItem" key={photo.id} onClick={onClick}>
-        <img
-          src={photo.webformatURL}
-          alt={photo.name}
-          id={photo.id}
-          className="ImageGalleryItem-image"
-        />
-      </li>
+    {photos.map((photo) => (
+      <ImageGaleryElement photo={photo} onClick={onClick} />
     ))}
   </ul>
 );
