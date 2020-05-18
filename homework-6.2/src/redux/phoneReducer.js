@@ -26,11 +26,18 @@ const errorReducer = createReducer(null, {
 });
 
 const loadingReducer = createReducer(false, {
-  [phoneActions.getContactsStart || phoneActions.addContactStart]: (
-    state,
-    { payload }
-  ) => true,
+  // to TRUE
+  [phoneActions.getContactsStart]: (state, { payload }) => true,
+  [phoneActions.addContactStart]: (state, { payload }) => true,
+  [phoneActions.deleteContactStart]: (state, { payload }) => true,
+
+  // to FALSE
   [phoneActions.getContacts]: (state, { payload }) => false,
+  [phoneActions.getContactsError]: (state, { payload }) => false,
+  [phoneActions.addContactSuccess]: (state, { payload }) => false,
+  [phoneActions.addContactError]: (state, { payload }) => false,
+  [phoneActions.deleteContactSuccess]: (state, { payload }) => false,
+  [phoneActions.deleteContactError]: (state, { payload }) => false,
 });
 
 export default combineReducers({
