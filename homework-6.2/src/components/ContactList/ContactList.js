@@ -5,7 +5,7 @@ import styles from "./ContactList.module.css";
 import slideTransition from "../../transitions/slideContact.module.css";
 import ContactListEl from "./ContactListEl";
 
-const ContactList = ({ contacts, onDelete, filter }) => {
+const ContactList = ({ contacts, filter }) => {
   const filterContacts = (contacts, filter) => {
     return contacts.filter(({ name }) =>
       name.toLowerCase().includes(filter.toLowerCase())
@@ -22,7 +22,6 @@ const ContactList = ({ contacts, onDelete, filter }) => {
             <ContactListEl
               name={name}
               styles={styles}
-              onDelete={onDelete}
               id={id}
               number={number}
             />
@@ -45,7 +44,6 @@ ContactList.propTypes = {
       id: PropTypes.string.isRequired,
     })
   ),
-  onDelete: PropTypes.func.isRequired,
 };
 
 export default ContactList;

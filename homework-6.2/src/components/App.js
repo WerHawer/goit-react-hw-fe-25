@@ -9,9 +9,9 @@ import { connect } from "react-redux";
 class App extends Component {
   state = {};
 
-  componentDidMount() {
-    this.props.getConactsFromLS();
-  }
+  // componentDidMount() {
+  //   this.props.getConactsFromLS();
+  // }
 
   render() {
     return (
