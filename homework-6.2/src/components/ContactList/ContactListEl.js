@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import * as phoneActions from "../../redux/phoneActions";
 
 const ContactListEl = ({ styles, name, number, onDelete, id }) => {
-  const onClickDel = useCallback(() => onDelete(id), [id]);
+  const onClickDel = useCallback(() => onDelete(id), [onDelete, id]);
 
   return (
     <li className={styles.li}>
