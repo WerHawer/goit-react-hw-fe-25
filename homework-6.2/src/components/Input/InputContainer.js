@@ -1,9 +1,10 @@
 import { connect } from "react-redux";
 import Input from "./Input";
 import * as phoneActions from "../../redux/phoneActions";
+import { getContacts } from "../../redux/phoneSelectors";
 
 const mapStateToProps = (state) => ({
-  contacts: state.contacts,
+  contacts: getContacts(state),
 });
 
 const mapDispatchToProps = (dispatch) => {

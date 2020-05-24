@@ -5,15 +5,7 @@ import styles from "./ContactList.module.css";
 import slideTransition from "../../transitions/slideContact.module.css";
 import ContactListEl from "./ContactListEl";
 
-const ContactList = ({ contacts, filter }) => {
-  const filterContacts = (contacts, filter) => {
-    return contacts.filter(({ name }) =>
-      name.toLowerCase().includes(filter.toLowerCase())
-    );
-  };
-
-  const filteredContacts = filterContacts(contacts, filter);
-
+const ContactList = ({ contacts, filteredContacts }) => {
   return (
     <>
       <TransitionGroup component="ul" className={styles.ul}>

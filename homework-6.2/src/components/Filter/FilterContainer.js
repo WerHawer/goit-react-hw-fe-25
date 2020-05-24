@@ -1,10 +1,11 @@
 import Filter from "./Filter";
 import { connect } from "react-redux";
 import * as phoneActions from "../../redux/phoneActions";
+import { getContacts, getFilterValue } from "../../redux/phoneSelectors";
 
 const mapStateToProps = (state) => ({
-  contacts: state.contacts,
-  value: state.filter,
+  contacts: getContacts(state),
+  value: getFilterValue(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
