@@ -1,3 +1,19 @@
 {
-  "contacts": []
+  "contacts": [
+    {
+      "name": "werhawer@gmail.com",
+      "number": "32-32-32",
+      "id": "yjQCF8_tl"
+    },
+    {
+      "name": "Kostyantyn Dmytrenko",
+      "number": "43-34-34",
+      "id": "WIihMwprl"
+    },
+    {
+      "name": "Kos",
+      "number": "43-34-34",
+      "id": "aZ-9b1NK-"
+    }
+  ]
 }
