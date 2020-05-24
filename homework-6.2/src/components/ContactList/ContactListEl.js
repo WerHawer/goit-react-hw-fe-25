@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import * as phoneActions from "../../redux/phoneActions";
 
 const ContactListEl = ({ styles, name, number, onDelete, id }) => {
-  const onClicDel = useCallback(() => onDelete(id), [id]);
+  const onClickDel = useCallback(() => onDelete(id), [id]);
 
   return (
     <li className={styles.li}>
@@ -12,7 +12,7 @@ const ContactListEl = ({ styles, name, number, onDelete, id }) => {
       <span className={styles.number}>{number}</span>
       <button
         type="button"
-        onClick={onClicDel}
+        onClick={onClickDel}
         className={styles.button}
       ></button>
     </li>
