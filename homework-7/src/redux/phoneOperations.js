@@ -21,7 +21,7 @@ export const addContact = (contactObj) => (dispatch) => {
 
 // Delete contact
 
-export const deleteContact = (id) => (dispatch, getState) => {
+export const deleteContact = (id) => (dispatch) => {
   dispatch(phoneActions.deleteContactStart());
 
   deleteContactById(id)

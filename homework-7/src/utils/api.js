@@ -7,6 +7,7 @@ export const fetchContacts = async () => {
     const request = await axios.get("/contacts");
     return request.data;
   } catch (error) {
+    console.log(error);
     throw error;
   }
 };
